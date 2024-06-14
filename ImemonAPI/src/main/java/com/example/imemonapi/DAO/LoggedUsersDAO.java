@@ -13,6 +13,9 @@ public class LoggedUsersDAO {
     public LoggedUsersDAO() throws ClassNotFoundException, SQLException {
         ConnectionFactory connectionFactory = new ConnectionFactory();
         db = connectionFactory.Connect();
+        String creation = "CREATE TABLE IF NOT EXISTS logged_users (session varchar(255), username varchar(255), primary key (session));";
+        PreparedStatement preparedStatement = db.prepareStatement(creation);
+        preparedStatement.executeUpdate();
     }
 
     public void insert(LoggedUsers loggedUsers) throws SQLException {

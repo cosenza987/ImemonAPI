@@ -3,16 +3,16 @@ package com.example.imemonapi.DAO;
 import com.example.imemonapi.ConnectionFactory;
 import com.example.imemonapi.Model.User;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class UserDAO {
     Connection db;
     public UserDAO() throws ClassNotFoundException, SQLException {
         ConnectionFactory connectionFactory = new ConnectionFactory();
         db = connectionFactory.Connect();
+        String creation = "CREATE TABLE IF NOT EXISTS users (id int, email varchar(255), password varchar(255), username varchar(255), PRIMARY KEY (id));";
+        Statement statement = db.createStatement();
+        statement.executeUpdate(creation);
     }
 
     public void insert(User user) throws SQLException {

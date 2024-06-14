@@ -14,6 +14,9 @@ public class PokemonMoveDAO {
     public PokemonMoveDAO() throws ClassNotFoundException, SQLException {
         ConnectionFactory connectionFactory = new ConnectionFactory();
         db = connectionFactory.Connect();
+        String creation = "CREATE TABLE IF NOT EXISTS pokemon_move (id int, move_id int, pokemon_id int, primary key (id));";
+        PreparedStatement statement = db.prepareStatement(creation);
+        statement.executeUpdate();
     }
 
     public ArrayList<PokemonMove> findByPokemonId(long pokemonId) throws SQLException {

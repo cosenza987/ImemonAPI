@@ -13,6 +13,9 @@ public class MoveDAO {
     public MoveDAO() throws ClassNotFoundException, SQLException {
         ConnectionFactory connectionFactory = new ConnectionFactory();
         db = connectionFactory.Connect();
+        String creation = "CREATE TABLE IF NOT EXISTS move (id int, effect varchar(255), name varchar(255), primary key (id));";
+        PreparedStatement statement = db.prepareStatement(creation);
+        statement.executeUpdate();
     }
 
     public Move findById(long id) throws SQLException {
