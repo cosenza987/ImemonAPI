@@ -15,7 +15,7 @@ public class TeamDAO {
     public TeamDAO() throws ClassNotFoundException, SQLException {
         ConnectionFactory connectionFactory = new ConnectionFactory();
         db = connectionFactory.Connect();
-        String creation = "CREATE TABLE IF NOT EXISTS teams (id int, move11 int, move12 int, move13 int, move14 int, move21 int, move22 int, move23 int, move24 int, move31 int, move32 int, move33 int, move34 int, move41 int, move42 int, move43 int, move44 int, move51 int, move52 int, move53 int, move54 int, move61 int, move62 int, move63 int, move64 int, poke1 int, poke2 int, poke3 int, poke4 int, poke5 int, poke6 int, team_name varchar(255), user varchar(255), primary_key(id));";
+        String creation = "CREATE TABLE IF NOT EXISTS teams (id int, move11 int, move12 int, move13 int, move14 int, move21 int, move22 int, move23 int, move24 int, move31 int, move32 int, move33 int, move34 int, move41 int, move42 int, move43 int, move44 int, move51 int, move52 int, move53 int, move54 int, move61 int, move62 int, move63 int, move64 int, poke1 int, poke2 int, poke3 int, poke4 int, poke5 int, poke6 int, team_name varchar(255), user varchar(255), primary key(id));";
         PreparedStatement statement = db.prepareStatement(creation);
         statement.executeUpdate();
     }
