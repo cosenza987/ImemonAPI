@@ -19,7 +19,6 @@ import java.util.ArrayList;
 public class MovesByPokemonServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Extract Pokemon ID from the request URL
         String[] pathParts = request.getPathInfo().split("/");
         if (pathParts.length != 2) {
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);

@@ -46,11 +46,9 @@ public class TeamServlet extends HttpServlet {
                 String simplePokedexJson = gson.toJson(new SimpleResponse(403, "forbidden"));
 
                 response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-                // Set content type and write JSON response
                 response.setContentType("application/json");
                 PrintWriter out = response.getWriter();
                 out.print(simplePokedexJson);
-                out.flush();
                 return;
             }
 
@@ -58,21 +56,17 @@ public class TeamServlet extends HttpServlet {
             Gson gson = new Gson();
             String TeamJson = gson.toJson(new TeamResponse(200, "Returning teams", teams));
 
-            // Set content type and write JSON response
             response.setContentType("application/json");
             PrintWriter out = response.getWriter();
             out.print(TeamJson);
-            out.flush();
         } catch (Exception e) {
             Gson gson = new Gson();
             String simplePokedexJson = gson.toJson(new SimpleResponse(500, "internal error"));
 
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            // Set content type and write JSON response
             response.setContentType("application/json");
             PrintWriter out = response.getWriter();
             out.print(simplePokedexJson);
-            out.flush();
         }
     }
 
@@ -87,11 +81,9 @@ public class TeamServlet extends HttpServlet {
                 String simplePokedexJson = gson.toJson(new SimpleResponse(403, "forbidden"));
 
                 response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-                // Set content type and write JSON response
                 response.setContentType("application/json");
                 PrintWriter out = response.getWriter();
                 out.print(simplePokedexJson);
-                out.flush();
                 return;
             }
             TeamDAO teamDAO = new TeamDAO();
@@ -102,11 +94,9 @@ public class TeamServlet extends HttpServlet {
                     String simplePokedexJson = gson.toJson(new SimpleResponse(404, "forbidden"));
 
                     response.setStatus(HttpServletResponse.SC_NOT_FOUND);
-                    // Set content type and write JSON response
                     response.setContentType("application/json");
                     PrintWriter out = response.getWriter();
                     out.print(simplePokedexJson);
-                    out.flush();
                     return;
                 }
             }
@@ -116,21 +106,17 @@ public class TeamServlet extends HttpServlet {
             Gson gson = new Gson();
             String simpleResponseJson = gson.toJson(new SimpleResponse(200, "Deleted Team"));
 
-            // Set content type and write JSON response
             response.setContentType("application/json");
             PrintWriter out = response.getWriter();
             out.print(simpleResponseJson);
-            out.flush();
         } catch (Exception e) {
             Gson gson = new Gson();
             String simpleResponseJson = gson.toJson(new SimpleResponse(500, "internal error"));
 
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            // Set content type and write JSON response
             response.setContentType("application/json");
             PrintWriter out = response.getWriter();
             out.print(simpleResponseJson);
-            out.flush();
         }
     }
 
@@ -143,11 +129,9 @@ public class TeamServlet extends HttpServlet {
                 String simpleResponseJson = gson.toJson(new SimpleResponse(403, "forbidden"));
 
                 response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-                // Set content type and write JSON response
                 response.setContentType("application/json");
                 PrintWriter out = response.getWriter();
                 out.print(simpleResponseJson);
-                out.flush();
                 return;
             }
 
@@ -192,22 +176,18 @@ public class TeamServlet extends HttpServlet {
             Gson gson = new Gson();
             String simpleResponseJson = gson.toJson(new SimpleResponse(200, "added"));
 
-            // Set content type and write JSON response
             response.setContentType("application/json");
             PrintWriter out = response.getWriter();
             out.print(simpleResponseJson);
-            out.flush();
             return;
         } catch (Exception e) {
             Gson gson = new Gson();
             String simpleResponseJson = gson.toJson(new SimpleResponse(500, "server error"));
 
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            // Set content type and write JSON response
             response.setContentType("application/json");
             PrintWriter out = response.getWriter();
             out.print(simpleResponseJson);
-            out.flush();
             return;
         }
     }

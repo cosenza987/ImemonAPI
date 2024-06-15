@@ -16,7 +16,6 @@ import java.sql.SQLException;
 public class PokedexMoveServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Extract Pokemon ID from the request URL
         String[] pathParts = request.getPathInfo().split("/");
         if (pathParts.length != 2) {
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
@@ -27,10 +26,8 @@ public class PokedexMoveServlet extends HttpServlet {
         try {
             Move move = new MoveDAO().findById(moveId);
 
-            // Serialize moves to JSON using Gson library
             String json = new Gson().toJson(move);
 
-            // Set response content type and write response
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
             response.getWriter().write(json);

@@ -79,7 +79,6 @@ public class UserServlet extends HttpServlet {
     }
 
     private void handleRegister(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
-        // Retrieve parameters from request
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String username = request.getParameter("username");
@@ -103,17 +102,14 @@ public class UserServlet extends HttpServlet {
             String session = CreateSession(username);
             String userJson = gson.toJson(new UserResponse(200, "registered", username, session));
 
-            // Set content type and write JSON response
             response.setContentType("application/json");
             PrintWriter out = response.getWriter();
             out.print(userJson);
-            out.flush();
         } catch (Exception e) {
             Gson gson = new Gson();
             String simplePokedexJson = gson.toJson(new SimpleResponse(500, "not inserted"));
 
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            // Set content type and write JSON response
             response.setContentType("application/json");
             PrintWriter out = response.getWriter();
             out.print(simplePokedexJson);
@@ -131,21 +127,17 @@ public class UserServlet extends HttpServlet {
                 String simplePokedexJson = gson.toJson(new SimpleResponse(403, "unauthorized"));
 
                 response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-                // Set content type and write JSON response
                 response.setContentType("application/json");
                 PrintWriter out = response.getWriter();
                 out.print(simplePokedexJson);
-                out.flush();
             }
             loggedUsersDAO.deleteBySession(session);
             Gson gson = new Gson();
             String simplePokedexJson = gson.toJson(new SimpleResponse(200, "logged out"));
 
-            // Set content type and write JSON response
             response.setContentType("application/json");
             PrintWriter out = response.getWriter();
             out.print(simplePokedexJson);
-            out.flush();
         } catch (Exception e) {
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
         }
